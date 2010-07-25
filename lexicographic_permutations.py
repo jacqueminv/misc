@@ -19,9 +19,7 @@ The Lexicographic permutations for the set {1,2,3,4} results as:
 '''
 
 def swap(items, i, j):
-    tmp = items[i]
-    items[i] = items[j]
-    items[j] = tmp
+    items[i], items[j] = items[j], items[i]
     return items
 
 def move_to_left(items):
@@ -30,14 +28,7 @@ def move_to_left(items):
             return swap(items, i, 0)
 
 def leftward(items, i, j):
-    tmp = items[i]
-    
-    if (i-j) > 1:
-        sub = items[j:i]
-    else:
-        sub = [items[j]]
-    
-    return items[:j] + [tmp] + sub
+    return items[:j] + [items[i]] + items[j:i]
 
 def rightward(items, i, j):
     return items[:j] + items[i:] + items[j:i]
